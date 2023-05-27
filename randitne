@@ -1,0 +1,85 @@
+import random
+
+def generate_password(length):
+    characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-_=+[{]};:',<.>/?"
+    password = ""
+    for _ in range(length):
+        password += random.choice(characters)
+    return password
+
+def calculate_fibonacci(n):
+    fib_sequence = [0, 1]
+    for i in range(2, n):
+        fib_sequence.append(fib_sequence[i-1] + fib_sequence[i-2])
+    return fib_sequence
+
+def generate_random_numbers(count, min_value, max_value):
+    numbers = []
+    for _ in range(count):
+        numbers.append(random.randint(min_value, max_value))
+    return numbers
+
+def is_prime(number):
+    if number < 2:
+        return False
+    for i in range(2, int(number ** 0.5) + 1):
+        if number % i == 0:
+            return False
+    return True
+
+def sort_list(numbers):
+    return sorted(numbers)
+
+def main():
+    print("Welcome to the Random Program!")
+
+    while True:
+        print("\nPlease choose an option:")
+        print("1. Generate a random password")
+        print("2. Calculate Fibonacci sequence")
+        print("3. Generate random numbers")
+        print("4. Check if a number is prime")
+        print("5. Sort a list of numbers")
+        print("6. Quit")
+
+        choice = input("Enter your choice (1-6): ")
+
+        if choice == "1":
+            length = int(input("Enter the length of the password: "))
+            password = generate_password(length)
+            print("Generated password:", password)
+
+        elif choice == "2":
+            n = int(input("Enter the number of Fibonacci numbers to calculate: "))
+            fibonacci_sequence = calculate_fibonacci(n)
+            print("Fibonacci sequence:", fibonacci_sequence)
+
+        elif choice == "3":
+            count = int(input("Enter the number of random numbers to generate: "))
+            min_value = int(input("Enter the minimum value: "))
+            max_value = int(input("Enter the maximum value: "))
+            random_numbers = generate_random_numbers(count, min_value, max_value)
+            print("Generated random numbers:", random_numbers)
+
+        elif choice == "4":
+            number = int(input("Enter a number to check if it's prime: "))
+            if is_prime(number):
+                print(number, "is prime")
+            else:
+                print(number, "is not prime")
+
+        elif choice == "5":
+            numbers = input("Enter a list of numbers (space-separated): ").split()
+            numbers = [int(num) for num in numbers]
+            sorted_numbers = sort_list(numbers)
+            print("Sorted numbers:", sorted_numbers)
+
+        elif choice == "6":
+            print("Thank you for using the Random Program!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
